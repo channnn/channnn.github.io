@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>canvas | Co&#39;Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="转载请注明出处
+
+##运用canvas画画并保存图片
+####读此文者必须有canvas相关基础
+####用到的工具：wampserver、webstorm
+1.首先我们先创建一个空画布并给宽高赋值；2.创建一个上传图片的按钮；3.创建一个保存图片的按钮；
+####HTML部分
+123&amp;lt;canvas id=&quot;myc&quot; height=&quot;500&quot; width=&quot;500&quot;&amp;gt;&amp;lt;/can">
+<meta property="og:type" content="article">
+<meta property="og:title" content="canvas">
+<meta property="og:url" content="http://yoursite.com/2016/07/29/canvas/index.html">
+<meta property="og:site_name" content="Co'Blog">
+<meta property="og:description" content="转载请注明出处
+
+##运用canvas画画并保存图片
+####读此文者必须有canvas相关基础
+####用到的工具：wampserver、webstorm
+1.首先我们先创建一个空画布并给宽高赋值；2.创建一个上传图片的按钮；3.创建一个保存图片的按钮；
+####HTML部分
+123&amp;lt;canvas id=&quot;myc&quot; height=&quot;500&quot; width=&quot;500&quot;&amp;gt;&amp;lt;/can">
+<meta property="og:updated_time" content="2016-07-29T06:30:36.919Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="canvas">
+<meta name="twitter:description" content="转载请注明出处
+
+##运用canvas画画并保存图片
+####读此文者必须有canvas相关基础
+####用到的工具：wampserver、webstorm
+1.首先我们先创建一个空画布并给宽高赋值；2.创建一个上传图片的按钮；3.创建一个保存图片的按钮；
+####HTML部分
+123&amp;lt;canvas id=&quot;myc&quot; height=&quot;500&quot; width=&quot;500&quot;&amp;gt;&amp;lt;/can">
+  
+    <link rel="alternative" href="/atom.xml" title="Co&#39;Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xp39h.com1.z0.glb.clouddn.com/166403689660643642.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Co Chen</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">n(*≧▽≦*)n</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>About</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/channnn/channnn.github.io" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="mail" target="_blank" href="/" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.yoyocjh.com/">我的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Co Chen</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://7xp39h.com1.z0.glb.clouddn.com/166403689660643642.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Co Chen</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">n(*≧▽≦*)n</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/channnn/channnn.github.io" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="mail" target="_blank" href="/" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-canvas" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/29/canvas/" class="article-date">
+  	<time datetime="2016-07-29T03:15:46.000Z" itemprop="datePublished">2016-07-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      canvas
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canvas/">canvas</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>转载请注明出处</p>
+</blockquote>
+<p>##运用canvas画画并保存图片</p>
+<p>####读此文者必须有canvas相关基础</p>
+<p>####用到的工具：wampserver、webstorm</p>
+<p>1.首先我们先创建一个空画布并给宽高赋值；<br>2.创建一个上传图片的按钮；<br>3.创建一个保存图片的按钮；</p>
+<p>####HTML部分</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myc"</span> <span class="attr">height</span>=<span class="string">"500"</span> <span class="attr">width</span>=<span class="string">"500"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">id</span>=<span class="string">"btn"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"btn2"</span> <span class="attr">value</span>=<span class="string">"保存"</span>&gt;</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>####JS部分</p>
+<ol>
+<li>JS获取相关对象；</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> canvas=<span class="built_in">document</span>.getElementById(<span class="string">"myc"</span>);</div><div class="line"><span class="keyword">var</span> oInput=<span class="built_in">document</span>.getElementById(<span class="string">"btn"</span>);</div><div class="line"><span class="keyword">var</span> oBtn=<span class="built_in">document</span>.getElementById(<span class="string">"btn2"</span>);</div><div class="line"><span class="keyword">var</span> oB=<span class="built_in">document</span>.getElementsByTagName(<span class="string">"body"</span>)[<span class="number">0</span>];</div></pre></td></tr></table></figure>
+<p>5.获取2d上下文环境；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ctx=canvas.getContext(<span class="string">"2d"</span>);</div></pre></td></tr></table></figure>
+<p>6.定义一个布尔变量；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> bol=<span class="literal">false</span>;<span class="comment">//判断是否按下鼠标</span></div></pre></td></tr></table></figure>
+<p>7.鼠标在页面上画画的相关代码；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">canvas.onmousedown=<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> x=e.clientX-canvas.offsetLeft;   <span class="comment">//获取鼠标x轴的位置；</span></div><div class="line">		<span class="keyword">var</span> y=e.clientY-canvas.offsetTop;	<span class="comment">//获取鼠标y轴的位置；</span></div><div class="line">		bol=<span class="literal">true</span>;                           <span class="comment">//鼠标按下将bol变为true；</span></div><div class="line">		ctx.beginPath();                    <span class="comment">//路径开始</span></div><div class="line">		ctx.moveTo(x,y);                    <span class="comment">//创建到达位置</span></div><div class="line">	&#125;;</div><div class="line">	canvas.onmousemove=<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">		<span class="keyword">if</span>(bol)&#123;</div><div class="line">			<span class="keyword">var</span> x=e.clientX-canvas.offsetLeft;</div><div class="line">			<span class="keyword">var</span> y=e.clientY-canvas.offsetTop;</div><div class="line">			ctx.lineTo(x,y);</div><div class="line">			ctx.stroke();                  <span class="comment">//画线</span></div><div class="line">		&#125;</div><div class="line">	&#125;;</div><div class="line">	<span class="built_in">document</span>.onmouseup=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		bol=<span class="literal">false</span>;                         <span class="comment">//放开鼠标后bol变为false</span></div><div class="line">	&#125;;</div></pre></td></tr></table></figure>
+<p>8.运用new FiileReader 与 readAsDataURL 获取图片地址；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 添加图片</span></div><div class="line">oInput.onchange=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">// console.log(oInput.files[0])//获取文件</span></div><div class="line">	<span class="keyword">var</span> fr=<span class="keyword">new</span> FileReader();</div><div class="line">	fr.readAsDataURL(oInput.files[<span class="number">0</span>]);</div><div class="line">	<span class="comment">// alert(fr.result);//必须解析完文件时才有值</span></div><div class="line">	fr.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="comment">// 表示解析完成</span></div><div class="line">		<span class="keyword">var</span> oImg=<span class="keyword">new</span> Image();</div><div class="line">		oImg.src=fr.result;<span class="comment">//图片的dataURL</span></div><div class="line">		oImg.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">			ctx.drawImage(oImg,<span class="number">0</span>,<span class="number">0</span>,canvas.width,canvas.height);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>9.在文件根目录下创建一个files的文件夹；<br>10.运用toDataURL导出图片并结合Ajax把图片传到files文件夹；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 点击导出,文字不允许中文</span></div><div class="line">oBtn.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">// jpg--&gt;jpeg</span></div><div class="line">	<span class="keyword">var</span> img_URL=canvas.toDataURL(<span class="string">"image/png"</span>,<span class="number">0.5</span>);<span class="comment">//默认为PNG格式;把canvas元素转化成图片的DataURL</span></div><div class="line">	alert(img_URL);</div><div class="line">	$.post(<span class="string">"canvas_load.php"</span>,&#123;<span class="string">"mypic"</span>:img_URL&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">s</span>)</span>&#123;</div><div class="line">		alert(s);</div><div class="line">	&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>11.将此文本保存为php格式；</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment">// 需要是php5及其以上的版本</span></div><div class="line">define(<span class="string">'UPLOAD_DIR'</span>, <span class="string">'files/'</span>);</div><div class="line">$img = $_POST[<span class="string">'mypic'</span>];</div><div class="line">$picname = $_FILES[<span class="string">'mypic'</span>][<span class="string">'name'</span>];</div><div class="line">$picsize = $_FILES[<span class="string">'mypic'</span>][<span class="string">'size'</span>];</div><div class="line">$img = str_replace(<span class="string">'data:image/png;base64,'</span>, <span class="string">''</span>, $img);</div><div class="line">$img = str_replace(<span class="string">' '</span>, <span class="string">'+'</span>, $img);</div><div class="line"><span class="comment">// Base64解码</span></div><div class="line">$data = base64_decode($img);</div><div class="line">$file = UPLOAD_DIR . uniqid() . <span class="string">'.png'</span>;</div><div class="line"><span class="comment">// 将图片数据写入文件</span></div><div class="line">$success = file_put_contents($file, $data);</div><div class="line"></div><div class="line">$size = round($picsize/<span class="number">1024</span>,<span class="number">2</span>);</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">print</span> $success ? $file : <span class="string">'保存文件失败'</span>;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p>11.参考资料；</p>
+<blockquote>
+<p><a href="http://www.w3school.com.cn/html5/html_5_canvas.asp" target="_blank" rel="external">http://www.w3school.com.cn/html5/html_5_canvas.asp</a><br><a href="http://www.w3school.com.cn/tags/canvas_drawimage.asp" target="_blank" rel="external">http://www.w3school.com.cn/tags/canvas_drawimage.asp</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL</a></p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/07/26/test/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">H5性能优化</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="canvas" data-title="canvas" data-url="http://yoursite.com/2016/07/29/canvas/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Co Chen
+    	</div>
+      
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
