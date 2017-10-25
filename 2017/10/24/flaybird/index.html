@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://7xp39h.com1.z0.glb.clouddn.com/20171024141820.png">
 <meta property="og:image" content="http://7xp39h.com1.z0.glb.clouddn.com/20171024141457.png">
 <meta property="og:image" content="http://7xp39h.com1.z0.glb.clouddn.com/20171025104056.png">
-<meta property="og:updated_time" content="2017-10-25T03:07:57.942Z">
+<meta property="og:updated_time" content="2017-10-25T03:10:49.308Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flaybird">
 <meta name="twitter:description" content="FlappyBird之前在网上玩过FlappyBird，想着想着便自己用JS写了一个。。">
@@ -320,136 +320,117 @@
 <li><p>首先我们要把touch.js引进项目，touchjs里包含着手机端的各种事件，这样我们就可以在手机上操作了。<br><code>&lt;script type=&quot;text/javascript&quot; src=&quot;touch-0.2.14.min.js&quot;&gt;&lt;/script&gt;</code></p>
 </li>
 <li><p>使底部滚动条滚动，这里我是用定时器的方法。</p>
+<p> `<br> // 无缝滚动<br> var oLiner=document.getElementById(“line”);<br> var lineTimer=setInterval(function(){</p>
+<pre><code>if(oLiner.offsetLeft&lt;=-343){                // 343为滚动条的宽度
+    oLiner.style.left=0;
+}
+oLiner.style.left=oLiner.offsetLeft-2+&quot;px&quot;;
+</code></pre><p> },10)</p>
 <p> `</p>
-<pre><code>// 无缝滚动
-var oLiner=document.getElementById(&quot;line&quot;);
-var lineTimer=setInterval(function(){
-    if(oLiner.offsetLeft&lt;=-343){                // 343为滚动条的宽度
-        oLiner.style.left=0;
-    }
-    oLiner.style.left=oLiner.offsetLeft-2+&quot;px&quot;;
-},10)
-</code></pre><p> `</p>
 </li>
 </ol>
 <ol>
 <li><p>点击开始时，我们先给小鸟定义speed、maxSpeed、type这三个属性，分别为匀速上升与下降的初始速度、最大的速度与小鸟的类型（上升与下降）。</p>
-<p> `</p>
-<pre><code>var oBird=document.getElementById(&quot;bird&quot;);    //小鸟这个对象
-var oMain=document.getElementById(&quot;main&quot;);  //页面主要区域
-oBird.speed=0;                                //初始速度
-oBird.maxSpeed=7;                             //小鸟下降与上升的最大速度
-oBird.type=&quot;&quot;;                                //小鸟的类型
-
-// 小鸟下降方法
-function down(){
-    oBird.speed+=0.5;
-    oBird.type=&quot;down_bird&quot;;
-    if(oBird.speed&gt;=oBird.maxSpeed){
-        oBird.speed=oBird.maxSpeed;
-    }
-    oBird.style.top=oBird.offsetTop+oBird.speed+&quot;px&quot;;
-    // 小鸟下降边界判断
-    if(oBird.offsetTop&gt;=oMain.clientHeight-oBird.offsetHeight){
-        clearInterval(oBird.downTimer);
-        clearInterval(oBird.srcTimer);
-        oBird.style.top=oMain.clientHeight-oBird.offsetHeight+&quot;px&quot;;
-        gameover();
-    }
-
+<p> `<br> var oBird=document.getElementById(“bird”);    //小鸟这个对象<br> var oMain=document.getElementById(“main”);  //页面主要区域<br> oBird.speed=0;                                //初始速度<br> oBird.maxSpeed=7;                             //小鸟下降与上升的最大速度<br> oBird.type=””;                                //小鸟的类型</p>
+<p> // 小鸟下降方法<br> function down(){</p>
+<pre><code>oBird.speed+=0.5;
+oBird.type=&quot;down_bird&quot;;
+if(oBird.speed&gt;=oBird.maxSpeed){
+    oBird.speed=oBird.maxSpeed;
 }
-</code></pre><p> `</p>
+oBird.style.top=oBird.offsetTop+oBird.speed+&quot;px&quot;;
+// 小鸟下降边界判断
+if(oBird.offsetTop&gt;=oMain.clientHeight-oBird.offsetHeight){
+    clearInterval(oBird.downTimer);
+    clearInterval(oBird.srcTimer);
+    oBird.style.top=oMain.clientHeight-oBird.offsetHeight+&quot;px&quot;;
+    gameover();
+}
+</code></pre><p> }</p>
+<p> `</p>
 <p> 一开始给小鸟一个上下居中于屏幕的初始位置，小鸟每次匀速下降0.5个像素，当它下降的速度等于它的最大速度时，速度就不再增加，直接把最大速度赋值给它下降的速度。当小鸟下降触碰到底部时，游戏结束。</p>
 <p> 即当oBird.offsetTop（小鸟距离屏幕顶部的位置）的值等于或大于oMain.clientHeight（主体部分高度）-oBird.offsetHeight（小鸟自身高度）的值时，游戏结束。</p>
 </li>
 <li><p>点击屏幕，小鸟挥动翅膀并匀速上升。</p>
+<p> `<br> // 小鸟上升<br> var oWrap=document.getElementById(“wrap”);            //屏幕主体<br> var oAudio=document.getElementById(“audio”);<br> touch.on(oWrap,”touchstart”,function(){</p>
+<pre><code>clearInterval(oBird.downTimer);                    //清除下降的定时器
+clearInterval(oBird.upTimer);                    //清除上升的定时器
+oAudio.children[1].play();                        //播放上升时的音乐
+oBird.speed=oBird.maxSpeed;
+oBird.type=&quot;up_bird&quot;;                            //改变小鸟的类型
+oBird.upTimer=setInterval(function(){
+    oBird.speed-=0.3;
+    if(oBird.speed&lt;=0){
+        clearInterval(oBird.upTimer);
+        oBird.downTimer=setInterval(down,30);    //开启下降定时器
+    }
+    oBird.style.top=oBird.offsetTop-oBird.speed+&quot;px&quot;;
+},30)
+</code></pre><p> })</p>
 <p> `</p>
-<pre><code>// 小鸟上升    
-var oWrap=document.getElementById(&quot;wrap&quot;);            //屏幕主体
-var oAudio=document.getElementById(&quot;audio&quot;);
-touch.on(oWrap,&quot;touchstart&quot;,function(){
-    clearInterval(oBird.downTimer);                    //清除下降的定时器
-    clearInterval(oBird.upTimer);                    //清除上升的定时器
-    oAudio.children[1].play();                        //播放上升时的音乐
-    oBird.speed=oBird.maxSpeed;
-    oBird.type=&quot;up_bird&quot;;                            //改变小鸟的类型
-    oBird.upTimer=setInterval(function(){
-        oBird.speed-=0.3;
-        if(oBird.speed&lt;=0){
-            clearInterval(oBird.upTimer);
-            oBird.downTimer=setInterval(down,30);    //开启下降定时器
-        }
-        oBird.style.top=oBird.offsetTop-oBird.speed+&quot;px&quot;;
-    },30)
-})
-</code></pre><p> `</p>
 <p> 当小鸟的上升速度等于或者小于0时，重新开启小鸟下降的定时器。</p>
+<p> `<br> // 小鸟拍翅膀<br> oBird.srcTimer=setInterval(function(){</p>
+<pre><code>// 改变图片下标
+oBird.index==0?oBird.index=1:oBird.index=0;
+oBird.src=&quot;img/&quot;+oBird.type+oBird.index+&quot;.png&quot;;
+</code></pre><p> },150)</p>
 <p> `</p>
-<pre><code>// 小鸟拍翅膀
-oBird.srcTimer=setInterval(function(){
-    // 改变图片下标
-    oBird.index==0?oBird.index=1:oBird.index=0;
-    oBird.src=&quot;img/&quot;+oBird.type+oBird.index+&quot;.png&quot;;
-},150)
-</code></pre><p> `</p>
 <p> 用定时器不断改变小鸟图片的下标，使其能有拍打翅膀的效果。</p>
 </li>
 </ol>
 <ol>
 <li><p>不断产生长短不一向左移动的管道。</p>
-<p> `</p>
-<pre><code>// pipe控制
-    createPipe=setInterval(function(){
-        // 生成pipe
-        var upPipe=document.createElement(&quot;div&quot;);                                //创建顶部管道元素
-        var downPipe=document.createElement(&quot;div&quot;);                                //创建底部管道元素
-        upPipe.innerHTML=&apos;&lt;img src=&quot;img/up_pipe.png&quot; alt=&quot;&quot;&gt;&apos;;                    //顶部管道元素属性
-        downPipe.innerHTML=&apos;&lt;img src=&quot;img/down_pipe.png&quot; alt=&quot;&quot;&gt;&apos;;                //底部管道元素属性
-        upPipe.className=&quot;pipe up_pipe&quot;;
-        downPipe.className=&quot;pipe down_pipe&quot;;
-        oMain.appendChild(upPipe);                                                //顶部管道插入到页面
-        oMain.appendChild(downPipe);                                            //底部管道插入到页面
-        // 随机高度
-        upPipe.style.height=parseInt(Math.random()*100)+80+&quot;px&quot;;                //给管道一个随机的高度
-        downPipe.style.height=oMain.clientHeight-upPipe.offsetHeight-140+&quot;px&quot;;  //140为小鸟通过的区域高度
-        upPipe.addScore=true;//判断是否能够加分
-        // pipe移动
-        upPipe.moveTimer=setInterval(function(){
-            if(upPipe.offsetLeft&lt;=-upPipe.offsetWidth){                            //当管道移出屏幕时删除结点
-                oMain.removeChild(upPipe);                                        
-                oMain.removeChild(downPipe);
-                clearInterval(upPipe.moveTimer);
-            }
-            upPipe.style.left=upPipe.offsetLeft-2+&quot;px&quot;;
-            downPipe.style.left=downPipe.offsetLeft-2+&quot;px&quot;;
-            // 碰撞检测
-            var l1=upPipe.offsetLeft-oBird.offsetWidth;                            //小鸟与管道左边碰撞时的距离
-            var l2=upPipe.offsetLeft+upPipe.offsetWidth;                        //小鸟与管道右边碰撞时的距离
-            var t1=upPipe.offsetHeight;
-            var t2=downPipe.offsetTop-oBird.offsetHeight;
-            var t=oBird.offsetTop;
-            var l=oBird.offsetLeft;
-            if((l&gt;=l1&amp;&amp;l&lt;=l2&amp;&amp;t&lt;=t1)||(l&gt;=l1&amp;&amp;l&lt;=l2&amp;&amp;t&gt;=t2)){
-                gameover();
-            }
-            // 检测加分
-            if(l&gt;=l2&amp;&amp;upPipe.addScore){
-                oAudio.children[2].play();
-                score++;
-                upPipe.addScore=false;
-                oScore.innerHTML=&quot;&quot;;//每次都要清空
-                var sScore=String(score);
-                // alert(typeof sScore);
-                for(var i=0;i&lt;sScore.length;i++){
-                    var oImg=document.createElement(&quot;img&quot;);
-                    oImg.src=&quot;img/&quot;+sScore[i]+&quot;.jpg&quot;;
-                    oScore.appendChild(oImg);
-                }
-            }
+<p> `<br>// pipe控制<br> createPipe=setInterval(function(){</p>
+<pre><code>// 生成pipe
+var upPipe=document.createElement(&quot;div&quot;);                                //创建顶部管道元素
+var downPipe=document.createElement(&quot;div&quot;);                                //创建底部管道元素
+upPipe.innerHTML=&apos;&lt;img src=&quot;img/up_pipe.png&quot; alt=&quot;&quot;&gt;&apos;;                    //顶部管道元素属性
+downPipe.innerHTML=&apos;&lt;img src=&quot;img/down_pipe.png&quot; alt=&quot;&quot;&gt;&apos;;                //底部管道元素属性
+upPipe.className=&quot;pipe up_pipe&quot;;
+downPipe.className=&quot;pipe down_pipe&quot;;
+oMain.appendChild(upPipe);                                                //顶部管道插入到页面
+oMain.appendChild(downPipe);                                            //底部管道插入到页面
+// 随机高度
+upPipe.style.height=parseInt(Math.random()*100)+80+&quot;px&quot;;                //给管道一个随机的高度
+downPipe.style.height=oMain.clientHeight-upPipe.offsetHeight-140+&quot;px&quot;;  //140为小鸟通过的区域高度
+upPipe.addScore=true;//判断是否能够加分
+// pipe移动
+upPipe.moveTimer=setInterval(function(){
+    if(upPipe.offsetLeft&lt;=-upPipe.offsetWidth){                            //当管道移出屏幕时删除结点
+        oMain.removeChild(upPipe);                                        
+        oMain.removeChild(downPipe);
+        clearInterval(upPipe.moveTimer);
+    }
+    upPipe.style.left=upPipe.offsetLeft-2+&quot;px&quot;;
+    downPipe.style.left=downPipe.offsetLeft-2+&quot;px&quot;;
+    // 碰撞检测
+    var l1=upPipe.offsetLeft-oBird.offsetWidth;                            //小鸟与管道左边碰撞时的距离
+    var l2=upPipe.offsetLeft+upPipe.offsetWidth;                        //小鸟与管道右边碰撞时的距离
+    var t1=upPipe.offsetHeight;
+    var t2=downPipe.offsetTop-oBird.offsetHeight;
+    var t=oBird.offsetTop;
+    var l=oBird.offsetLeft;
+    if((l&gt;=l1&amp;&amp;l&lt;=l2&amp;&amp;t&lt;=t1)||(l&gt;=l1&amp;&amp;l&lt;=l2&amp;&amp;t&gt;=t2)){
+        gameover();
+    }
+    // 检测加分
+    if(l&gt;=l2&amp;&amp;upPipe.addScore){
+        oAudio.children[2].play();
+        score++;
+        upPipe.addScore=false;
+        oScore.innerHTML=&quot;&quot;;//每次都要清空
+        var sScore=String(score);
+        // alert(typeof sScore);
+        for(var i=0;i&lt;sScore.length;i++){
+            var oImg=document.createElement(&quot;img&quot;);
+            oImg.src=&quot;img/&quot;+sScore[i]+&quot;.jpg&quot;;
+            oScore.appendChild(oImg);
+        }
+    }
 
-        },30)
-    },3000)
-</code></pre><p> `    </p>
+},30)
+</code></pre><p> },3000)</p>
+<p> `    </p>
 </li>
 </ol>
 <pre><code>![pic](http://7xp39h.com1.z0.glb.clouddn.com/123.jpg)
@@ -459,38 +440,32 @@ oBird.srcTimer=setInterval(function(){
 **注意：有且仅当三个条件都成立时，游戏结束。因为分数是用图片的缘故，所以每次加分数时都要清空一次。**
 </code></pre><ol>
 <li><p>游戏结束，保存最高分到本地。</p>
-<p> `</p>
-<pre><code>// 判断localStoragre.score是否存在
-if(localStorage.score==undefined){
-    localStorage.score=0;
-}
-// 游戏结束
-function gameover(){
-    if(isStart){
-        isStart=false;
-        // 清定时器
-        clearInterval(createPipe);
-        clearInterval(lineTimer);
-        oAudio.children[3].play();
-        oAudio.children[4].play();
-        var aPipe=document.getElementsByClassName(&quot;up_pipe&quot;);
-        for(var i=0;i&lt;aPipe.length;i++){
-            clearInterval(aPipe[i].moveTimer);
-        }
-        // 显示隐藏
-        oGameover.style.display=&quot;block&quot;;
-        //记录分数
-        oRankScore.innerHTML=score;
-        // alert(localStorage.score);
-        if(score&gt;localStorage.score){
-            localStorage.score=score;
-        }
-        oBest.innerHTML=localStorage.score;
-        oWrap.onclick=&quot;&quot;;
+<p> `<br> // 判断localStoragre.score是否存在<br> if(localStorage.score==undefined){</p>
+<pre><code>localStorage.score=0;
+</code></pre><p> }<br> // 游戏结束<br> function gameover(){</p>
+<pre><code>if(isStart){
+    isStart=false;
+    // 清定时器
+    clearInterval(createPipe);
+    clearInterval(lineTimer);
+    oAudio.children[3].play();
+    oAudio.children[4].play();
+    var aPipe=document.getElementsByClassName(&quot;up_pipe&quot;);
+    for(var i=0;i&lt;aPipe.length;i++){
+        clearInterval(aPipe[i].moveTimer);
     }
-
+    // 显示隐藏
+    oGameover.style.display=&quot;block&quot;;
+    //记录分数
+    oRankScore.innerHTML=score;
+    // alert(localStorage.score);
+    if(score&gt;localStorage.score){
+        localStorage.score=score;
+    }
+    oBest.innerHTML=localStorage.score;
+    oWrap.onclick=&quot;&quot;;
 }
-</code></pre><p> `</p>
+</code></pre><p> }<br> `</p>
 <p> 这里使用了localstorage来储存分数，用起来非常简单，直接申明变量即可，而且没有时间限制。</p>
 </li>
 </ol>
