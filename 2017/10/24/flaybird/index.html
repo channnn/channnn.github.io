@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://7xp39h.com1.z0.glb.clouddn.com/20171024141457.png">
 <meta property="og:image" content="http://7xp39h.com1.z0.glb.clouddn.com/20171025104056.png">
 <meta property="og:image" content="http://7xp39h.com1.z0.glb.clouddn.com/123.jpg">
-<meta property="og:updated_time" content="2017-10-25T03:19:40.684Z">
+<meta property="og:updated_time" content="2017-10-25T03:24:39.948Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flaybird">
 <meta name="twitter:description" content="FlappyBird之前在网上玩过FlappyBird，想着想着便自己用JS写了一个。。">
@@ -457,32 +457,7 @@ oBird.srcTimer=setInterval(function(){
 <p><strong>注意：有且仅当三个条件都成立时，游戏结束。因为分数是用图片的缘故，所以每次加分数时都要清空一次。</strong></p>
 <ol>
 <li><p>游戏结束，保存最高分到本地。</p>
-<p> `<br> // 判断localStoragre.score是否存在<br> if(localStorage.score==undefined){</p>
-<pre><code>localStorage.score=0;
-</code></pre><p> }<br> // 游戏结束<br> function gameover(){</p>
-<pre><code>if(isStart){
-    isStart=false;
-    // 清定时器
-    clearInterval(createPipe);
-    clearInterval(lineTimer);
-    oAudio.children[3].play();
-    oAudio.children[4].play();
-    var aPipe=document.getElementsByClassName(&quot;up_pipe&quot;);
-    for(var i=0;i&lt;aPipe.length;i++){
-        clearInterval(aPipe[i].moveTimer);
-    }
-    // 显示隐藏
-    oGameover.style.display=&quot;block&quot;;
-    //记录分数
-    oRankScore.innerHTML=score;
-    // alert(localStorage.score);
-    if(score&gt;localStorage.score){
-        localStorage.score=score;
-    }
-    oBest.innerHTML=localStorage.score;
-    oWrap.onclick=&quot;&quot;;
-}
-</code></pre><p> }<br> `</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 判断localStoragre.score是否存在</span></div><div class="line"><span class="keyword">if</span>(localStorage.score==<span class="literal">undefined</span>)&#123;</div><div class="line">	localStorage.score=<span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 游戏结束</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">gameover</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">if</span>(isStart)&#123;</div><div class="line">		isStart=<span class="literal">false</span>;</div><div class="line">		<span class="comment">// 清定时器</span></div><div class="line">		clearInterval(createPipe);</div><div class="line">		clearInterval(lineTimer);</div><div class="line">		oAudio.children[<span class="number">3</span>].play();</div><div class="line">		oAudio.children[<span class="number">4</span>].play();</div><div class="line">		<span class="keyword">var</span> aPipe=<span class="built_in">document</span>.getElementsByClassName(<span class="string">"up_pipe"</span>);</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;aPipe.length;i++)&#123;</div><div class="line">			clearInterval(aPipe[i].moveTimer);</div><div class="line">		&#125;</div><div class="line">		<span class="comment">// 显示隐藏</span></div><div class="line">		oGameover.style.display=<span class="string">"block"</span>;</div><div class="line">		<span class="comment">//记录分数</span></div><div class="line">		oRankScore.innerHTML=score;</div><div class="line">		<span class="comment">// alert(localStorage.score);</span></div><div class="line">		<span class="keyword">if</span>(score&gt;localStorage.score)&#123;</div><div class="line">			localStorage.score=score;</div><div class="line">		&#125;</div><div class="line">		oBest.innerHTML=localStorage.score;</div><div class="line">		oWrap.onclick=<span class="string">""</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p> 这里使用了localstorage来储存分数，用起来非常简单，直接申明变量即可，而且没有时间限制。</p>
 </li>
 </ol>
