@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://7xp39h.com1.z0.glb.clouddn.com/20171024141457.png">
 <meta property="og:image" content="http://7xp39h.com1.z0.glb.clouddn.com/20171025104056.png">
 <meta property="og:image" content="http://7xp39h.com1.z0.glb.clouddn.com/123.jpg">
-<meta property="og:updated_time" content="2017-10-25T03:24:39.948Z">
+<meta property="og:updated_time" content="2017-10-25T03:26:17.653Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flaybird">
 <meta name="twitter:description" content="FlappyBird之前在网上玩过FlappyBird，想着想着便自己用JS写了一个。。">
@@ -275,183 +275,33 @@
 </li>
 </ul>
 <p>有了大概的思路，我们就可以进行页面布局了。</p>
-<pre><code>`
-&lt;div id=&quot;wrap&quot;&gt;
-    &lt;div id=&quot;main&quot;&gt;
-        &lt;!-- 显示分数区域 --&gt;
-        &lt;div id=&quot;score&quot;&gt;
-            &lt;img src=&quot;img/0.jpg&quot; alt=&quot;&quot;&gt;
-        &lt;/div&gt;
-        &lt;div id=&quot;head&quot;&gt;
-            &lt;img src=&quot;img/head.jpg&quot; alt=&quot;&quot;&gt;&lt;span&gt;&lt;/span&gt;
-        &lt;/div&gt;
-        &lt;div id=&quot;menu&quot;&gt;
-            &lt;span id=&quot;start&quot;&gt;&lt;/span&gt;
-        &lt;/div&gt;
-        &lt;img src=&quot;img/bird0.png&quot; alt=&quot;&quot; id=&quot;bird&quot;&gt;
-        &lt;!-- 游戏结束弹出的分数 --&gt;
-        &lt;div id=&quot;gameover&quot;&gt;
-            &lt;div id=&quot;rank&quot;&gt;
-                &lt;span id=&quot;rank_score&quot;&gt;0&lt;/span&gt;
-                &lt;span id=&quot;best&quot;&gt;0&lt;/span&gt;
-            &lt;/div&gt;
-            &lt;div id=&quot;menu2&quot;&gt;
-                &lt;span id=&quot;ok&quot;&gt;&lt;/span&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;!-- 页面底部滚动条 --&gt;
-    &lt;div id=&quot;line&quot;&gt;
-        &lt;img src=&quot;img/banner.jpg&quot; alt=&quot;&quot;&gt;&lt;img src=&quot;img/banner.jpg&quot; alt=&quot;&quot;&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- 配乐 --&gt;
-&lt;div id=&quot;audio&quot;&gt;
-    &lt;audio src=&quot;Sounds/game_music.mp3&quot; autoplay loop&gt;&lt;/audio&gt;
-    &lt;audio src=&quot;Sounds/Wing.wav&quot;&gt;&lt;/audio&gt;
-    &lt;audio src=&quot;Sounds/Point.wav&quot;&gt;&lt;/audio&gt;
-    &lt;audio src=&quot;Sounds/Hit.wav&quot;&gt;&lt;/audio&gt;
-    &lt;audio src=&quot;Sounds/Die.wav&quot;&gt;&lt;/audio&gt;
-&lt;/div&gt;
-
-`
+<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">&lt;div id=<span class="string">"wrap"</span>&gt;</div><div class="line">	&lt;div id="main"&gt;</div><div class="line">		&lt;!-- 显示分数区域 --&gt;</div><div class="line">		&lt;div id="score"&gt;</div><div class="line">			&lt;img src="img/0.jpg" alt=""&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">		&lt;div id="head"&gt;</div><div class="line">			&lt;img src="img/head.jpg" alt=""&gt;&lt;span&gt;&lt;/span&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">		&lt;div id="menu"&gt;</div><div class="line">			&lt;span id="start"&gt;&lt;/span&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">		&lt;img src="img/bird0.png" alt="" id="bird"&gt;</div><div class="line">		&lt;!-- 游戏结束弹出的分数 --&gt;</div><div class="line">		&lt;div id="gameover"&gt;</div><div class="line">			&lt;div id="rank"&gt;</div><div class="line">				&lt;span id="rank_score"&gt;0&lt;/span&gt;</div><div class="line">				&lt;span id="best"&gt;0&lt;/span&gt;</div><div class="line">			&lt;/div&gt;</div><div class="line">			&lt;div id="menu2"&gt;</div><div class="line">				&lt;span id="ok"&gt;&lt;/span&gt;</div><div class="line">			&lt;/div&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">	&lt;!-- 页面底部滚动条 --&gt;</div><div class="line">	&lt;div id="line"&gt;</div><div class="line">		&lt;img src="img/banner.jpg" alt=""&gt;&lt;img src="img/banner.jpg" alt=""&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;!-- 配乐 --&gt;</div><div class="line">&lt;div id="audio"&gt;</div><div class="line">	&lt;audio src="Sounds/game_music.mp3" autoplay loop&gt;&lt;/audio&gt;</div><div class="line">	&lt;audio src="Sounds/Wing.wav"&gt;&lt;/audio&gt;</div><div class="line">	&lt;audio src="Sounds/Point.wav"&gt;&lt;/audio&gt;</div><div class="line">	&lt;audio src="Sounds/Hit.wav"&gt;&lt;/audio&gt;</div><div class="line">	&lt;audio src="Sounds/Die.wav"&gt;&lt;/audio&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
 </code></pre><p>布局我就不详细说了，直接上代码吧。</p>
 <p>然后主要来说说逻辑方面的。</p>
 <ol>
 <li><p>首先我们要把touch.js引进项目，touchjs里包含着手机端的各种事件，这样我们就可以在手机上操作了。<br><code>&lt;script type=&quot;text/javascript&quot; src=&quot;touch-0.2.14.min.js&quot;&gt;&lt;/script&gt;</code></p>
 </li>
 <li><p>使底部滚动条滚动，这里我是用定时器的方法。</p>
-<p> `</p>
-<pre><code>// 无缝滚动
-var oLiner=document.getElementById(&quot;line&quot;);
-var lineTimer=setInterval(function(){
-    if(oLiner.offsetLeft&lt;=-343){                // 343为滚动条的宽度
-        oLiner.style.left=0;
-    }
-    oLiner.style.left=oLiner.offsetLeft-2+&quot;px&quot;;
-},10)
-</code></pre></li>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 无缝滚动</span></div><div class="line"><span class="keyword">var</span> oLiner=<span class="built_in">document</span>.getElementById(<span class="string">"line"</span>);</div><div class="line"><span class="keyword">var</span> lineTimer=setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">if</span>(oLiner.offsetLeft&lt;=<span class="number">-343</span>)&#123;				<span class="comment">// 343为滚动条的宽度</span></div><div class="line">		oLiner.style.left=<span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	oLiner.style.left=oLiner.offsetLeft<span class="number">-2</span>+<span class="string">"px"</span>;</div><div class="line">&#125;,<span class="number">10</span>)</div></pre></td></tr></table></figure>
+</li>
 </ol>
-<pre><code>`
-</code></pre><ol>
+<ol>
 <li><p>点击开始时，我们先给小鸟定义speed、maxSpeed、type这三个属性，分别为匀速上升与下降的初始速度、最大的速度与小鸟的类型（上升与下降）。</p>
-<p> `</p>
-<pre><code>var oBird=document.getElementById(&quot;bird&quot;);    //小鸟这个对象
-var oMain=document.getElementById(&quot;main&quot;);  //页面主要区域
-oBird.speed=0;                                //初始速度
-oBird.maxSpeed=7;                             //小鸟下降与上升的最大速度
-oBird.type=&quot;&quot;;                                //小鸟的类型
-
-// 小鸟下降方法
-function down(){
-    oBird.speed+=0.5;
-    oBird.type=&quot;down_bird&quot;;
-    if(oBird.speed&gt;=oBird.maxSpeed){
-        oBird.speed=oBird.maxSpeed;
-    }
-    oBird.style.top=oBird.offsetTop+oBird.speed+&quot;px&quot;;
-    // 小鸟下降边界判断
-    if(oBird.offsetTop&gt;=oMain.clientHeight-oBird.offsetHeight){
-        clearInterval(oBird.downTimer);
-        clearInterval(oBird.srcTimer);
-        oBird.style.top=oMain.clientHeight-oBird.offsetHeight+&quot;px&quot;;
-        gameover();
-    }
-
-}
-</code></pre><p> `</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> oBird=<span class="built_in">document</span>.getElementById(<span class="string">"bird"</span>);	<span class="comment">//小鸟这个对象</span></div><div class="line"><span class="keyword">var</span> oMain=<span class="built_in">document</span>.getElementById(<span class="string">"main"</span>);  <span class="comment">//页面主要区域</span></div><div class="line">oBird.speed=<span class="number">0</span>;								<span class="comment">//初始速度</span></div><div class="line">oBird.maxSpeed=<span class="number">7</span>;         					<span class="comment">//小鸟下降与上升的最大速度</span></div><div class="line">oBird.type=<span class="string">""</span>;								<span class="comment">//小鸟的类型</span></div><div class="line"></div><div class="line"><span class="comment">// 小鸟下降方法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">down</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	oBird.speed+=<span class="number">0.5</span>;</div><div class="line">	oBird.type=<span class="string">"down_bird"</span>;</div><div class="line">	<span class="keyword">if</span>(oBird.speed&gt;=oBird.maxSpeed)&#123;</div><div class="line">		oBird.speed=oBird.maxSpeed;</div><div class="line">	&#125;</div><div class="line">	oBird.style.top=oBird.offsetTop+oBird.speed+<span class="string">"px"</span>;</div><div class="line">	<span class="comment">// 小鸟下降边界判断</span></div><div class="line">	<span class="keyword">if</span>(oBird.offsetTop&gt;=oMain.clientHeight-oBird.offsetHeight)&#123;</div><div class="line">		clearInterval(oBird.downTimer);</div><div class="line">		clearInterval(oBird.srcTimer);</div><div class="line">		oBird.style.top=oMain.clientHeight-oBird.offsetHeight+<span class="string">"px"</span>;</div><div class="line">		gameover();</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p> 一开始给小鸟一个上下居中于屏幕的初始位置，小鸟每次匀速下降0.5个像素，当它下降的速度等于它的最大速度时，速度就不再增加，直接把最大速度赋值给它下降的速度。当小鸟下降触碰到底部时，游戏结束。</p>
 <p> 即当oBird.offsetTop（小鸟距离屏幕顶部的位置）的值等于或大于oMain.clientHeight（主体部分高度）-oBird.offsetHeight（小鸟自身高度）的值时，游戏结束。</p>
 </li>
 <li><p>点击屏幕，小鸟挥动翅膀并匀速上升。</p>
-<p> `</p>
-<pre><code>// 小鸟上升    
-var oWrap=document.getElementById(&quot;wrap&quot;);            //屏幕主体
-var oAudio=document.getElementById(&quot;audio&quot;);
-touch.on(oWrap,&quot;touchstart&quot;,function(){
-    clearInterval(oBird.downTimer);                    //清除下降的定时器
-    clearInterval(oBird.upTimer);                    //清除上升的定时器
-    oAudio.children[1].play();                        //播放上升时的音乐
-    oBird.speed=oBird.maxSpeed;
-    oBird.type=&quot;up_bird&quot;;                            //改变小鸟的类型
-    oBird.upTimer=setInterval(function(){
-        oBird.speed-=0.3;
-        if(oBird.speed&lt;=0){
-            clearInterval(oBird.upTimer);
-            oBird.downTimer=setInterval(down,30);    //开启下降定时器
-        }
-        oBird.style.top=oBird.offsetTop-oBird.speed+&quot;px&quot;;
-    },30)
-})
-</code></pre><p> `</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 小鸟上升	</span></div><div class="line"><span class="keyword">var</span> oWrap=<span class="built_in">document</span>.getElementById(<span class="string">"wrap"</span>);			<span class="comment">//屏幕主体</span></div><div class="line"><span class="keyword">var</span> oAudio=<span class="built_in">document</span>.getElementById(<span class="string">"audio"</span>);</div><div class="line">touch.on(oWrap,<span class="string">"touchstart"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	clearInterval(oBird.downTimer);					<span class="comment">//清除下降的定时器</span></div><div class="line">	clearInterval(oBird.upTimer);					<span class="comment">//清除上升的定时器</span></div><div class="line">	oAudio.children[<span class="number">1</span>].play();						<span class="comment">//播放上升时的音乐</span></div><div class="line">	oBird.speed=oBird.maxSpeed;</div><div class="line">	oBird.type=<span class="string">"up_bird"</span>;							<span class="comment">//改变小鸟的类型</span></div><div class="line">	oBird.upTimer=setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		oBird.speed-=<span class="number">0.3</span>;</div><div class="line">		<span class="keyword">if</span>(oBird.speed&lt;=<span class="number">0</span>)&#123;</div><div class="line">			clearInterval(oBird.upTimer);</div><div class="line">			oBird.downTimer=setInterval(down,<span class="number">30</span>);	<span class="comment">//开启下降定时器</span></div><div class="line">		&#125;</div><div class="line">		oBird.style.top=oBird.offsetTop-oBird.speed+<span class="string">"px"</span>;</div><div class="line">	&#125;,<span class="number">30</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p> 当小鸟的上升速度等于或者小于0时，重新开启小鸟下降的定时器。</p>
-<p> `</p>
-<pre><code>// 小鸟拍翅膀
-oBird.srcTimer=setInterval(function(){
-    // 改变图片下标
-    oBird.index==0?oBird.index=1:oBird.index=0;
-    oBird.src=&quot;img/&quot;+oBird.type+oBird.index+&quot;.png&quot;;
-},150)
-</code></pre><p> `</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 小鸟拍翅膀</span></div><div class="line">oBird.srcTimer=setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">// 改变图片下标</span></div><div class="line">	oBird.index==<span class="number">0</span>?oBird.index=<span class="number">1</span>:oBird.index=<span class="number">0</span>;</div><div class="line">	oBird.src=<span class="string">"img/"</span>+oBird.type+oBird.index+<span class="string">".png"</span>;</div><div class="line">&#125;,<span class="number">150</span>)</div></pre></td></tr></table></figure>
 <p> 用定时器不断改变小鸟图片的下标，使其能有拍打翅膀的效果。</p>
 </li>
 </ol>
 <ol>
 <li><p>不断产生长短不一向左移动的管道。</p>
-<p> `</p>
-<pre><code>        // pipe控制
-        createPipe=setInterval(function(){
-            // 生成pipe
-            var upPipe=document.createElement(&quot;div&quot;);                                //创建顶部管道元素
-            var downPipe=document.createElement(&quot;div&quot;);                                //创建底部管道元素
-            upPipe.innerHTML=&apos;&lt;img src=&quot;img/up_pipe.png&quot; alt=&quot;&quot;&gt;&apos;;                    //顶部管道元素属性
-            downPipe.innerHTML=&apos;&lt;img src=&quot;img/down_pipe.png&quot; alt=&quot;&quot;&gt;&apos;;                //底部管道元素属性
-            upPipe.className=&quot;pipe up_pipe&quot;;
-            downPipe.className=&quot;pipe down_pipe&quot;;
-            oMain.appendChild(upPipe);                                                //顶部管道插入到页面
-            oMain.appendChild(downPipe);                                            //底部管道插入到页面
-            // 随机高度
-            upPipe.style.height=parseInt(Math.random()*100)+80+&quot;px&quot;;                //给管道一个随机的高度
-            downPipe.style.height=oMain.clientHeight-upPipe.offsetHeight-140+&quot;px&quot;;  //140为小鸟通过的区域高度
-            upPipe.addScore=true;//判断是否能够加分
-            // pipe移动
-            upPipe.moveTimer=setInterval(function(){
-                if(upPipe.offsetLeft&lt;=-upPipe.offsetWidth){                            //当管道移出屏幕时删除结点
-                    oMain.removeChild(upPipe);                                        
-                    oMain.removeChild(downPipe);
-                    clearInterval(upPipe.moveTimer);
-                }
-                upPipe.style.left=upPipe.offsetLeft-2+&quot;px&quot;;
-                downPipe.style.left=downPipe.offsetLeft-2+&quot;px&quot;;
-                // 碰撞检测
-                var l1=upPipe.offsetLeft-oBird.offsetWidth;                            //小鸟与管道左边碰撞时的距离
-                var l2=upPipe.offsetLeft+upPipe.offsetWidth;                        //小鸟与管道右边碰撞时的距离
-                var t1=upPipe.offsetHeight;
-                var t2=downPipe.offsetTop-oBird.offsetHeight;
-                var t=oBird.offsetTop;
-                var l=oBird.offsetLeft;
-                if((l&gt;=l1&amp;&amp;l&lt;=l2&amp;&amp;t&lt;=t1)||(l&gt;=l1&amp;&amp;l&lt;=l2&amp;&amp;t&gt;=t2)){
-                    gameover();
-                }
-                // 检测加分
-                if(l&gt;=l2&amp;&amp;upPipe.addScore){
-                    oAudio.children[2].play();
-                    score++;
-                    upPipe.addScore=false;
-                    oScore.innerHTML=&quot;&quot;;//每次都要清空
-                    var sScore=String(score);
-                    // alert(typeof sScore);
-                    for(var i=0;i&lt;sScore.length;i++){
-                        var oImg=document.createElement(&quot;img&quot;);
-                        oImg.src=&quot;img/&quot;+sScore[i]+&quot;.jpg&quot;;
-                        oScore.appendChild(oImg);
-                    }
-                }
-
-            },30)
-        },3000)
-`
-</code></pre></li>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// pipe控制</span></div><div class="line">createPipe=setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">// 生成pipe</span></div><div class="line">	<span class="keyword">var</span> upPipe=<span class="built_in">document</span>.createElement(<span class="string">"div"</span>);								<span class="comment">//创建顶部管道元素</span></div><div class="line">	<span class="keyword">var</span> downPipe=<span class="built_in">document</span>.createElement(<span class="string">"div"</span>);								<span class="comment">//创建底部管道元素</span></div><div class="line">	upPipe.innerHTML=<span class="string">'&lt;img src="img/up_pipe.png" alt=""&gt;'</span>;					<span class="comment">//顶部管道元素属性</span></div><div class="line">	downPipe.innerHTML=<span class="string">'&lt;img src="img/down_pipe.png" alt=""&gt;'</span>;				<span class="comment">//底部管道元素属性</span></div><div class="line">	upPipe.className=<span class="string">"pipe up_pipe"</span>;</div><div class="line">	downPipe.className=<span class="string">"pipe down_pipe"</span>;</div><div class="line">	oMain.appendChild(upPipe);												<span class="comment">//顶部管道插入到页面</span></div><div class="line">	oMain.appendChild(downPipe);											<span class="comment">//底部管道插入到页面</span></div><div class="line">	<span class="comment">// 随机高度</span></div><div class="line">	upPipe.style.height=<span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random()*<span class="number">100</span>)+<span class="number">80</span>+<span class="string">"px"</span>;				<span class="comment">//给管道一个随机的高度</span></div><div class="line">	downPipe.style.height=oMain.clientHeight-upPipe.offsetHeight<span class="number">-140</span>+<span class="string">"px"</span>;  <span class="comment">//140为小鸟通过的区域高度</span></div><div class="line">	upPipe.addScore=<span class="literal">true</span>;<span class="comment">//判断是否能够加分</span></div><div class="line">	<span class="comment">// pipe移动</span></div><div class="line">	upPipe.moveTimer=setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">if</span>(upPipe.offsetLeft&lt;=-upPipe.offsetWidth)&#123;							<span class="comment">//当管道移出屏幕时删除结点</span></div><div class="line">			oMain.removeChild(upPipe);										</div><div class="line">			oMain.removeChild(downPipe);</div><div class="line">			clearInterval(upPipe.moveTimer);</div><div class="line">		&#125;</div><div class="line">		upPipe.style.left=upPipe.offsetLeft<span class="number">-2</span>+<span class="string">"px"</span>;</div><div class="line">		downPipe.style.left=downPipe.offsetLeft<span class="number">-2</span>+<span class="string">"px"</span>;</div><div class="line">		<span class="comment">// 碰撞检测</span></div><div class="line">		<span class="keyword">var</span> l1=upPipe.offsetLeft-oBird.offsetWidth;							<span class="comment">//小鸟与管道左边碰撞时的距离</span></div><div class="line">		<span class="keyword">var</span> l2=upPipe.offsetLeft+upPipe.offsetWidth;						<span class="comment">//小鸟与管道右边碰撞时的距离</span></div><div class="line">		<span class="keyword">var</span> t1=upPipe.offsetHeight;</div><div class="line">		<span class="keyword">var</span> t2=downPipe.offsetTop-oBird.offsetHeight;</div><div class="line">		<span class="keyword">var</span> t=oBird.offsetTop;</div><div class="line">		<span class="keyword">var</span> l=oBird.offsetLeft;</div><div class="line">		<span class="keyword">if</span>((l&gt;=l1&amp;&amp;l&lt;=l2&amp;&amp;t&lt;=t1)||(l&gt;=l1&amp;&amp;l&lt;=l2&amp;&amp;t&gt;=t2))&#123;</div><div class="line">			gameover();</div><div class="line">		&#125;</div><div class="line">		<span class="comment">// 检测加分</span></div><div class="line">		<span class="keyword">if</span>(l&gt;=l2&amp;&amp;upPipe.addScore)&#123;</div><div class="line">			oAudio.children[<span class="number">2</span>].play();</div><div class="line">			score++;</div><div class="line">			upPipe.addScore=<span class="literal">false</span>;</div><div class="line">			oScore.innerHTML=<span class="string">""</span>;<span class="comment">//每次都要清空</span></div><div class="line">			<span class="keyword">var</span> sScore=<span class="built_in">String</span>(score);</div><div class="line">			<span class="comment">// alert(typeof sScore);</span></div><div class="line">			<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;sScore.length;i++)&#123;</div><div class="line">				<span class="keyword">var</span> oImg=<span class="built_in">document</span>.createElement(<span class="string">"img"</span>);</div><div class="line">				oImg.src=<span class="string">"img/"</span>+sScore[i]+<span class="string">".jpg"</span>;</div><div class="line">				oScore.appendChild(oImg);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">			</div><div class="line">	&#125;,<span class="number">30</span>)</div><div class="line">&#125;,<span class="number">3000</span>)</div></pre></td></tr></table></figure>
+</li>
 </ol>
 <p><img src="http://7xp39h.com1.z0.glb.clouddn.com/123.jpg" alt="pic"></p>
 <p><strong>注意：有且仅当三个条件都成立时，游戏结束。因为分数是用图片的缘故，所以每次加分数时都要清空一次。</strong></p>
