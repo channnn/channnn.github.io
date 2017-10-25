@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://7xp39h.com1.z0.glb.clouddn.com/20171024141457.png">
 <meta property="og:image" content="http://7xp39h.com1.z0.glb.clouddn.com/20171025104056.png">
 <meta property="og:image" content="http://7xp39h.com1.z0.glb.clouddn.com/123.jpg">
-<meta property="og:updated_time" content="2017-10-25T03:15:24.533Z">
+<meta property="og:updated_time" content="2017-10-25T03:19:40.684Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flaybird">
 <meta name="twitter:description" content="FlappyBird之前在网上玩过FlappyBird，想着想着便自己用JS写了一个。。">
@@ -106,7 +106,7 @@
 						<li>Links</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -321,16 +321,19 @@
 <li><p>首先我们要把touch.js引进项目，touchjs里包含着手机端的各种事件，这样我们就可以在手机上操作了。<br><code>&lt;script type=&quot;text/javascript&quot; src=&quot;touch-0.2.14.min.js&quot;&gt;&lt;/script&gt;</code></p>
 </li>
 <li><p>使底部滚动条滚动，这里我是用定时器的方法。</p>
-<p> `<br> // 无缝滚动<br> var oLiner=document.getElementById(“line”);<br> var lineTimer=setInterval(function(){</p>
-<pre><code>if(oLiner.offsetLeft&lt;=-343){                // 343为滚动条的宽度
-    oLiner.style.left=0;
-}
-oLiner.style.left=oLiner.offsetLeft-2+&quot;px&quot;;
-</code></pre><p> },10)</p>
 <p> `</p>
-</li>
+<pre><code>// 无缝滚动
+var oLiner=document.getElementById(&quot;line&quot;);
+var lineTimer=setInterval(function(){
+    if(oLiner.offsetLeft&lt;=-343){                // 343为滚动条的宽度
+        oLiner.style.left=0;
+    }
+    oLiner.style.left=oLiner.offsetLeft-2+&quot;px&quot;;
+},10)
+</code></pre></li>
 </ol>
-<ol>
+<pre><code>`
+</code></pre><ol>
 <li><p>点击开始时，我们先给小鸟定义speed、maxSpeed、type这三个属性，分别为匀速上升与下降的初始速度、最大的速度与小鸟的类型（上升与下降）。</p>
 <p> `</p>
 <pre><code>var oBird=document.getElementById(&quot;bird&quot;);    //小鸟这个对象
