@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="keywords" content="co'sblog,yoyocjh,yoyohui,chenjunhui,yoyohuiblog,coblog,陈俊辉">
+  <meta name="description" content="co'sblog,yoyocjh,yoyohui,chenjunhui,yoyohuiblog,coblog,陈俊辉">
+  <meta name="baidu-site-verification" content="kESPwLTu5v" />
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>flaybird | Co&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="FlappyBird之前在网上玩过FlappyBird，想着想着便自己用JS写了一个。。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flaybird">
+<meta property="og:url" content="http://yoursite.com/2017/10/24/flaybird/index.html">
+<meta property="og:site_name" content="Co's Blog">
+<meta property="og:description" content="FlappyBird之前在网上玩过FlappyBird，想着想着便自己用JS写了一个。。">
+<meta property="og:image" content="http://7xp39h.com1.z0.glb.clouddn.com/20171024141820.png">
+<meta property="og:image" content="http://7xp39h.com1.z0.glb.clouddn.com/20171024141457.png">
+<meta property="og:image" content="http://7xp39h.com1.z0.glb.clouddn.com/20171025104056.png">
+<meta property="og:updated_time" content="2017-10-25T03:03:14.324Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="flaybird">
+<meta name="twitter:description" content="FlappyBird之前在网上玩过FlappyBird，想着想着便自己用JS写了一个。。">
+<meta name="twitter:image" content="http://7xp39h.com1.z0.glb.clouddn.com/20171024141820.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Co&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+
+<script type="text/javascript">
+  (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xp39h.com1.z0.glb.clouddn.com/166403689660643642.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Co Chan</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">n(*≧▽≦*)n</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>About</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/channnn/channnn.github.io" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="mail" target="_blank" href="/" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/h5/" style="font-size: 10px;">h5</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.yoyocjh.com/">我的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Co Chan</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://7xp39h.com1.z0.glb.clouddn.com/166403689660643642.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Co Chan</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">n(*≧▽≦*)n</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/channnn/channnn.github.io" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="mail" target="_blank" href="/" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-flaybird" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/10/24/flaybird/" class="article-date">
+  	<time datetime="2017-10-24T01:51:47.000Z" itemprop="datePublished">2017-10-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      flaybird
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/h5/">h5</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="FlappyBird"><a href="#FlappyBird" class="headerlink" title="FlappyBird"></a>FlappyBird</h2><p>之前在网上玩过FlappyBird，想着想着便自己用JS写了一个。。</p>
+<p><img src="http://7xp39h.com1.z0.glb.clouddn.com/20171024141820.png" alt="pic"></p>
+<a id="more"></a>
+<p><img src="http://7xp39h.com1.z0.glb.clouddn.com/20171024141457.png" alt="pic"></p>
+<p><img src="http://7xp39h.com1.z0.glb.clouddn.com/20171025104056.png" alt="pic"></p>
+<p>从上面的图可以得出大概的思路：</p>
+<ul>
+<li><p>配乐，底部绿色滚动条开始滚动，小鸟挥动着翅膀。</p>
+</li>
+<li><p>点击start，把小鸟固定在一个靠左的位置，小鸟开始匀速下降。</p>
+</li>
+<li><p>点击屏幕，小鸟匀速上升。</p>
+</li>
+<li><p>右边开始产生长短不一的管道并向左移动。</p>
+</li>
+<li><p>碰撞检测，通过管道时改变分数。</p>
+</li>
+<li><p>记录每次游戏结束时的分数，与之前的分数进行比对，保存最高分数。</p>
+</li>
+</ul>
+<p>有了大概的思路，我们就可以进行页面布局了。</p>
+<pre><code>`
+&lt;div id=&quot;wrap&quot;&gt;
+    &lt;div id=&quot;main&quot;&gt;
+        &lt;!-- 显示分数区域 --&gt;
+        &lt;div id=&quot;score&quot;&gt;
+            &lt;img src=&quot;img/0.jpg&quot; alt=&quot;&quot;&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;head&quot;&gt;
+            &lt;img src=&quot;img/head.jpg&quot; alt=&quot;&quot;&gt;&lt;span&gt;&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;menu&quot;&gt;
+            &lt;span id=&quot;start&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;img src=&quot;img/bird0.png&quot; alt=&quot;&quot; id=&quot;bird&quot;&gt;
+        &lt;!-- 游戏结束弹出的分数 --&gt;
+        &lt;div id=&quot;gameover&quot;&gt;
+            &lt;div id=&quot;rank&quot;&gt;
+                &lt;span id=&quot;rank_score&quot;&gt;0&lt;/span&gt;
+                &lt;span id=&quot;best&quot;&gt;0&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div id=&quot;menu2&quot;&gt;
+                &lt;span id=&quot;ok&quot;&gt;&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- 页面底部滚动条 --&gt;
+    &lt;div id=&quot;line&quot;&gt;
+        &lt;img src=&quot;img/banner.jpg&quot; alt=&quot;&quot;&gt;&lt;img src=&quot;img/banner.jpg&quot; alt=&quot;&quot;&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- 配乐 --&gt;
+&lt;div id=&quot;audio&quot;&gt;
+    &lt;audio src=&quot;Sounds/game_music.mp3&quot; autoplay loop&gt;&lt;/audio&gt;
+    &lt;audio src=&quot;Sounds/Wing.wav&quot;&gt;&lt;/audio&gt;
+    &lt;audio src=&quot;Sounds/Point.wav&quot;&gt;&lt;/audio&gt;
+    &lt;audio src=&quot;Sounds/Hit.wav&quot;&gt;&lt;/audio&gt;
+    &lt;audio src=&quot;Sounds/Die.wav&quot;&gt;&lt;/audio&gt;
+&lt;/div&gt;
+</code></pre><p>`</p>
+<p>布局我就不详细说了，直接上代码吧。</p>
+<p>然后主要来说说逻辑方面的。</p>
+<ol>
+<li><p>首先我们要把touch.js引进项目，touchjs里包含着手机端的各种事件，这样我们就可以在手机上操作了。<br><code>&lt;script type=&quot;text/javascript&quot; src=&quot;touch-0.2.14.min.js&quot;&gt;&lt;/script&gt;</code></p>
+</li>
+<li><p>使底部滚动条滚动，这里我是用定时器的方法。</p>
+<p> `</p>
+<pre><code>// 无缝滚动
+var oLiner=document.getElementById(&quot;line&quot;);
+var lineTimer=setInterval(function(){
+    if(oLiner.offsetLeft&lt;=-343){                // 343为滚动条的宽度
+        oLiner.style.left=0;
+    }
+    oLiner.style.left=oLiner.offsetLeft-2+&quot;px&quot;;
+},10)
+</code></pre><p> `</p>
+</li>
+</ol>
+<ol>
+<li><p>点击开始时，我们先给小鸟定义speed、maxSpeed、type这三个属性，分别为匀速上升与下降的初始速度、最大的速度与小鸟的类型（上升与下降）。<br> `</p>
+<pre><code>var oBird=document.getElementById(&quot;bird&quot;);    //小鸟这个对象
+var oMain=document.getElementById(&quot;main&quot;);  //页面主要区域
+oBird.speed=0;                                //初始速度
+oBird.maxSpeed=7;                             //小鸟下降与上升的最大速度
+oBird.type=&quot;&quot;;                                //小鸟的类型
+
+// 小鸟下降方法
+function down(){
+    oBird.speed+=0.5;
+    oBird.type=&quot;down_bird&quot;;
+    if(oBird.speed&gt;=oBird.maxSpeed){
+        oBird.speed=oBird.maxSpeed;
+    }
+    oBird.style.top=oBird.offsetTop+oBird.speed+&quot;px&quot;;
+    // 小鸟下降边界判断
+    if(oBird.offsetTop&gt;=oMain.clientHeight-oBird.offsetHeight){
+        clearInterval(oBird.downTimer);
+        clearInterval(oBird.srcTimer);
+        oBird.style.top=oMain.clientHeight-oBird.offsetHeight+&quot;px&quot;;
+        gameover();
+    }
+
+}
+</code></pre></li>
+</ol>
+<pre><code>`
+
+一开始给小鸟一个上下居中于屏幕的初始位置，小鸟每次匀速下降0.5个像素，当它下降的速度等于它的最大速度时，速度就不再增加，直接把最大速度赋值给它下降的速度。当小鸟下降触碰到底部时，游戏结束。
+
+即当oBird.offsetTop（小鸟距离屏幕顶部的位置）的值等于或大于oMain.clientHeight（主体部分高度）-oBird.offsetHeight（小鸟自身高度）的值时，游戏结束。
+</code></pre><ol>
+<li><p>点击屏幕，小鸟挥动翅膀并匀速上升。</p>
+<p> `</p>
+<pre><code>// 小鸟上升    
+var oWrap=document.getElementById(&quot;wrap&quot;);            //屏幕主体
+var oAudio=document.getElementById(&quot;audio&quot;);
+touch.on(oWrap,&quot;touchstart&quot;,function(){
+    clearInterval(oBird.downTimer);                    //清除下降的定时器
+    clearInterval(oBird.upTimer);                    //清除上升的定时器
+    oAudio.children[1].play();                        //播放上升时的音乐
+    oBird.speed=oBird.maxSpeed;
+    oBird.type=&quot;up_bird&quot;;                            //改变小鸟的类型
+    oBird.upTimer=setInterval(function(){
+        oBird.speed-=0.3;
+        if(oBird.speed&lt;=0){
+            clearInterval(oBird.upTimer);
+            oBird.downTimer=setInterval(down,30);    //开启下降定时器
+        }
+        oBird.style.top=oBird.offsetTop-oBird.speed+&quot;px&quot;;
+    },30)
+})
+</code></pre></li>
+</ol>
+<pre><code>`
+
+当小鸟的上升速度等于或者小于0时，重新开启小鸟下降的定时器。
+
+`
+
+    // 小鸟拍翅膀
+    oBird.srcTimer=setInterval(function(){
+        // 改变图片下标
+        oBird.index==0?oBird.index=1:oBird.index=0;
+        oBird.src=&quot;img/&quot;+oBird.type+oBird.index+&quot;.png&quot;;
+    },150)
+
+
+`
+
+用定时器不断改变小鸟图片的下标，使其能有拍打翅膀的效果。
+</code></pre><ol>
+<li><p>不断产生长短不一向左移动的管道。</p>
+<p> `</p>
+<pre><code>// pipe控制
+    createPipe=setInterval(function(){
+        // 生成pipe
+        var upPipe=document.createElement(&quot;div&quot;);                                //创建顶部管道元素
+        var downPipe=document.createElement(&quot;div&quot;);                                //创建底部管道元素
+        upPipe.innerHTML=&apos;&lt;img src=&quot;img/up_pipe.png&quot; alt=&quot;&quot;&gt;&apos;;                    //顶部管道元素属性
+        downPipe.innerHTML=&apos;&lt;img src=&quot;img/down_pipe.png&quot; alt=&quot;&quot;&gt;&apos;;                //底部管道元素属性
+        upPipe.className=&quot;pipe up_pipe&quot;;
+        downPipe.className=&quot;pipe down_pipe&quot;;
+        oMain.appendChild(upPipe);                                                //顶部管道插入到页面
+        oMain.appendChild(downPipe);                                            //底部管道插入到页面
+        // 随机高度
+        upPipe.style.height=parseInt(Math.random()*100)+80+&quot;px&quot;;                //给管道一个随机的高度
+        downPipe.style.height=oMain.clientHeight-upPipe.offsetHeight-140+&quot;px&quot;;  //140为小鸟通过的区域高度
+        upPipe.addScore=true;//判断是否能够加分
+        // pipe移动
+        upPipe.moveTimer=setInterval(function(){
+            if(upPipe.offsetLeft&lt;=-upPipe.offsetWidth){                            //当管道移出屏幕时删除结点
+                oMain.removeChild(upPipe);                                        
+                oMain.removeChild(downPipe);
+                clearInterval(upPipe.moveTimer);
+            }
+            upPipe.style.left=upPipe.offsetLeft-2+&quot;px&quot;;
+            downPipe.style.left=downPipe.offsetLeft-2+&quot;px&quot;;
+            // 碰撞检测
+            var l1=upPipe.offsetLeft-oBird.offsetWidth;                            //小鸟与管道左边碰撞时的距离
+            var l2=upPipe.offsetLeft+upPipe.offsetWidth;                        //小鸟与管道右边碰撞时的距离
+            var t1=upPipe.offsetHeight;
+            var t2=downPipe.offsetTop-oBird.offsetHeight;
+            var t=oBird.offsetTop;
+            var l=oBird.offsetLeft;
+            if((l&gt;=l1&amp;&amp;l&lt;=l2&amp;&amp;t&lt;=t1)||(l&gt;=l1&amp;&amp;l&lt;=l2&amp;&amp;t&gt;=t2)){
+                gameover();
+            }
+            // 检测加分
+            if(l&gt;=l2&amp;&amp;upPipe.addScore){
+                oAudio.children[2].play();
+                score++;
+                upPipe.addScore=false;
+                oScore.innerHTML=&quot;&quot;;//每次都要清空
+                var sScore=String(score);
+                // alert(typeof sScore);
+                for(var i=0;i&lt;sScore.length;i++){
+                    var oImg=document.createElement(&quot;img&quot;);
+                    oImg.src=&quot;img/&quot;+sScore[i]+&quot;.jpg&quot;;
+                    oScore.appendChild(oImg);
+                }
+            }
+
+        },30)
+    },3000)
+</code></pre></li>
+</ol>
+<pre><code>`    
+
+
+![pic](http://7xp39h.com1.z0.glb.clouddn.com/123.jpg)
+
+
+
+**注意：有且仅当三个条件都成立时，游戏结束。因为分数是用图片的缘故，所以每次加分数时都要清空一次。**
+</code></pre><ol>
+<li><p>游戏结束，保存最高分到本地。</p>
+<p> `</p>
+<pre><code>// 判断localStoragre.score是否存在
+if(localStorage.score==undefined){
+    localStorage.score=0;
+}
+// 游戏结束
+function gameover(){
+    if(isStart){
+        isStart=false;
+        // 清定时器
+        clearInterval(createPipe);
+        clearInterval(lineTimer);
+        oAudio.children[3].play();
+        oAudio.children[4].play();
+        var aPipe=document.getElementsByClassName(&quot;up_pipe&quot;);
+        for(var i=0;i&lt;aPipe.length;i++){
+            clearInterval(aPipe[i].moveTimer);
+        }
+        // 显示隐藏
+        oGameover.style.display=&quot;block&quot;;
+        //记录分数
+        oRankScore.innerHTML=score;
+        // alert(localStorage.score);
+        if(score&gt;localStorage.score){
+            localStorage.score=score;
+        }
+        oBest.innerHTML=localStorage.score;
+        oWrap.onclick=&quot;&quot;;
+    }
+
+}
+</code></pre><p> `</p>
+<p> 这里使用了localstorage来储存分数，用起来非常简单，直接申明变量即可，而且没有时间限制。</p>
+</li>
+</ol>
+<p><strong><a href="http://7xp39h.com1.z0.glb.clouddn.com/flayBird.zip" target="_blank" rel="external">FlappyBird完整项目下载</a></strong></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/10/25/New Document/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/29/canvas/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">canvas</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="flaybird" data-title="flaybird" data-url="http://yoursite.com/2017/10/24/flaybird/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Co Chan
+    	</div>
+
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
